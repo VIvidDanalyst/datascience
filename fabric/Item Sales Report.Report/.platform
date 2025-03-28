@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Item Sales Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fbe363bf-f66b-87ac-47d6-4061da119007"
+  }
+}
