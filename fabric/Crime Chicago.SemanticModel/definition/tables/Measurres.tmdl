@@ -1,0 +1,404 @@
+table Measurres
+	lineageTag: e75a27f7-e1c1-4251-ae8c-b1f7492b9be2
+
+	measure 'Total Crimes' = Count('Crime Chicago'[ID])
+		formatString: #,0
+		lineageTag: 013ae995-58de-4939-9d08-4bb65fbdf402
+
+	measure 'first date' = MIN('Crime Chicago'[Date])
+		formatString: General Date
+		lineageTag: 30499033-7d8b-4b43-be2d-97a23f6a09a7
+
+	measure 'last date' = MAX('Crime Chicago'[Date])
+		formatString: General Date
+		lineageTag: 7dcccc37-be97-4446-ba8d-3164640f9f1d
+
+	measure 'Last 90 Days ::' = ```
+			
+			VAR LastWeek = 
+			    Min('Date'[Period90Days])
+			RETURN 
+			CALCULATE(
+			    [Total Crimes], 
+			    'Date'[Period90Days] = LastWeek
+			)
+			```
+		formatString: #,0
+		lineageTag: 779aea53-fb41-4cc4-94a1-f2b35af6859d
+
+	measure Crimeweek = ```
+			
+			DIVIDE(([Total Crimes]-[PastWeek]),[PastWeek])/100
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7927ee68-3364-4242-ae7e-f90b3033fb8d
+
+	measure MostRecentWeekCrimes = ```
+			
+			VAR LatestWeek = CALCULATE(MAX('Date'[Year-Week]), ALL('Date'))
+			VAR PresentWeekCrimes = CALCULATE([Total Crimes], 'Date'[Year-Week] = LatestWeek)
+			VAR PreviousWeekCrimes = 
+			    CALCULATE(
+			        [Total Crimes], 
+			        'Date'[Year-Week] = LatestWeek - 1
+			    )
+			VAR WeekOverWeekChange = 
+			    DIVIDE(PresentWeekCrimes - PreviousWeekCrimes, PreviousWeekCrimes)
+			
+			RETURN
+			    IF(
+			        ISBLANK(PresentWeekCrimes) || ISBLANK(PreviousWeekCrimes),
+			        BLANK(),
+			        WeekOverWeekChange
+			    )
+			
+			```
+		lineageTag: e4d63ead-c607-44b6-b621-419e21889c4f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PastWeek = ```
+			
+			CALCULATE(
+			    [Total Crimes],
+			    FILTER(
+			        ALL('Date'),
+			        'Date'[WeekCtr] = MAX('Date'[WeekCtr])-1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 2827fa76-9e00-4b47-a6dc-8a90aa5912f9
+
+	measure 'Last 7 Days ::' =
+			
+			CALCULATE(
+			    [Total Crimes],
+			    FILTER(
+			        'Date',
+			        'Date'[WeekCtr] = MAXX('Date','Date'[WeekCtr])
+			    )
+			)
+		formatString: 0
+		lineageTag: 2a0521ad-8498-4324-b578-17694ceded95
+
+	measure CrimeRate = ```
+			
+			VAR CurrentWeek = MAX('Date'[WeekCtr])
+			VAR PreviousWeek = CurrentWeek - 1
+			
+			VAR CrimePrev = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = PreviousWeek
+			    )
+			
+			VAR CrimeCurr = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = CurrentWeek
+			    )
+			
+			VAR Rate = 
+			    DIVIDE(CrimeCurr - CrimePrev, CrimePrev, BLANK())
+			
+			RETURN
+			    Rate
+			
+			```
+		lineageTag: fef5fef4-66bd-483b-91bc-b40520616df9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure LastWeekCrimeRate = ```
+			
+			VAR CurrentWeek = MAX('Date'[WeekCtr])+1
+			VAR PreviousWeek = CurrentWeek-2
+			
+			VAR CrimePrev = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = PreviousWeek
+			    )
+			
+			VAR CrimeCurr = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = CurrentWeek
+			    )
+			
+			VAR Rate = 
+			    DIVIDE(CrimeCurr - CrimePrev, CrimePrev, BLANK())
+			
+			RETURN
+			    Rate
+			
+			```
+		lineageTag: bb15fbf5-48c5-42d1-9033-bd3a69f6718e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '7 Days Moving Average' = ```
+			
+			CALCULATE(
+			    AVERAGEX(
+			        DATESINPERIOD(
+			            'Date'[Date],
+			            LASTDATE('Date'[Date]),
+			            -7,
+			            DAY
+			        ),
+			        [Total Crimes]
+			    )
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 99d1cb2c-78c3-4e9f-8f0a-29395e97ef86
+
+	measure 'Average Trust' = AVERAGE(Police_Sentiment_Scores[TRUST])/100
+		lineageTag: c93e23ce-1297-47d6-85bd-de8054d42c20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Safety' = AVERAGE(Police_Sentiment_Scores[SAFETY])/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 31a94caa-16a1-4042-9703-1771bef79599
+
+	measure Arrested = CALCULATE([Total Crimes],'Crime Chicago'[Arrest]="TRUE")
+		formatString: #,0
+		lineageTag: fecd873d-79d1-4135-ae79-7c640eaf045f
+
+	measure 'Current Year::' =
+			
+			VAR Presentyear =
+			
+			        CALCULATe([Total Crimes],
+			            VALUES('Date'[Date]),
+			            'Date'[ISO Year] = MAX('Date'[ISO Year])
+			        )
+			    RETURN
+			    Presentyear
+		formatString: 0
+		lineageTag: 753a28a6-e7d5-4b0f-817b-058d5cdff390
+
+	measure 'Last 28 Days' = ```
+			
+			 VAR CurrentMonth = Max('Date'[Date])-27
+			VAR LastMonth =
+			        CALCULATE([Total Crimes],
+			            VALUES('Date'[Date]),
+			            'Date'[Date] >= CurrentMonth
+			        )
+			RETURN
+			LastMonth
+			```
+		formatString: 0
+		lineageTag: 8cada3da-5a79-4467-9f59-6d0321e80c53
+
+	measure PYC =
+			
+			CALCULATE([Total Crimes],SAMEPERIODLASTYEAR('Date'[Date]))
+		formatString: #,0
+		lineageTag: 8ca20bd4-a489-4550-8174-c55c7758c7b3
+
+	measure # = ```
+			
+			VAR SelectedPeriod = SELECTEDVALUE('Date Selection'[Selection])
+			
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    SelectedPeriod = "7D", [Last 7 Days ::],
+			    SelectedPeriod = "28D", [Last 28 Days],
+			    SelectedPeriod = "90D", [Last 90 Days ::],
+			    SelectedPeriod = "2024", [Current Year::],
+			    [Total Crimes]  // Default measure if other periods are selected or no selection
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 664d315a-4f80-460b-89f2-1ba5c473aa6a
+
+	measure * = ```
+			
+			VAR SelectedPeriod = SELECTEDVALUE('Date Selection'[Selection], "No Selection")
+			VAR TitleText =
+			    SWITCH(
+			        TRUE(),
+			        SelectedPeriod = "7D", "Crimes for the Last 7 Days",
+			        SelectedPeriod = "28D", "Crimes for the Last 28 Days",
+			        SelectedPeriod = "90D", "Crimes for the Last 90 Days",
+			        SelectedPeriod = "2024", "Crimes for the Present Year",
+			        "Crimes Overview"  // Default title if no specific period is selected
+			    )
+			
+			RETURN
+			TitleText
+			
+			```
+		lineageTag: 87356753-deb2-46df-a64d-6260f27c887b
+
+	measure Average = DIVIDE([Total Crimes],COUNTROWS('Crime Category'))
+		formatString: 0
+		lineageTag: 0146213e-39e9-47ae-a8dc-6162804643f8
+
+	measure 'Crime Level Label' = ```
+			
+			VAR Crimeaboveaverage = [Total Crimes]- [7 Days Moving Average]
+			RETURN
+			IF(
+			    [Total Crimes] > [7 Days Moving Average],
+			    FORMAT(Crimeaboveaverage, "0") & " Above Normal",
+			    "Within Range"
+			)
+			
+			```
+		lineageTag: a1a4400d-1bb1-4e6b-a2ac-b4e9e1d68c50
+
+	measure 'Average Dialy Crime' = ```
+			
+			   VAR DAYY = CALCULATE(
+			        DISTINCTCOUNT('Date'[Date]),
+			        ALLSELECTED('Date')  // Ensure it respects the current slicer/filter context
+			    )
+			VAR AverageCrimesPerDay = 
+			    DIVIDE(
+			        [Total Crimes],       // Total crimes measure
+			        DAYY,      // Distinct days measure
+			        0                     // Alternate result in case of division by zero
+			    )
+			RETURN
+			AverageCrimesPerDay
+			
+			
+			```
+		formatString: 0
+		lineageTag: e9867c0e-1a9f-4056-82fe-047865b551dd
+
+	measure DisplayedCrimeRate = ```
+			
+			VAR CurrentWeek = MAX('Date'[WeekCtr])
+			VAR PreviousWeek = CurrentWeek - 1
+			
+			-- Calculate the crime rate for the current and previous week
+			VAR CrimeCurr = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = CurrentWeek
+			    )
+			
+			VAR CrimePrev = 
+			    CALCULATE(
+			        [PreviousWeekC]
+			    )
+			
+			-- Calculate the rate
+			VAR Rate = 
+			    DIVIDE(CrimeCurr - CrimePrev, CrimePrev, BLANK())
+			
+			RETURN
+			    Rate
+			
+			```
+		lineageTag: e2b033fd-e05e-4ca2-9506-b35b35aa364a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Domestic Crime' = CALCULATE([Total Crimes],'Crime Chicago'[Domestic]="True")
+		formatString: #,0
+		lineageTag: fad91452-4eeb-4a73-a093-217ab60e3eec
+
+	measure PreviousWeekC = ```
+			
+			VAR CurrentWeek = MAX('Date'[WeekCtr])
+			VAR PreviousWeek = CurrentWeek - 1
+			VAR PreviousWeekCrimesValue = 
+			    CALCULATE(
+			        [Total Crimes],
+			        'Date'[WeekCtr] = PreviousWeek
+			    )
+			
+			RETURN
+			    IF(
+			        ISBLANK(PreviousWeekCrimesValue),
+			        CALCULATE(
+			            [Total Crimes],
+			            'Date'[WeekCtr] = PreviousWeek - 1
+			        ),
+			        PreviousWeekCrimesValue
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: a6454760-e8e8-4cc7-abc3-a2de61bee5ae
+
+	measure SelectedPeriod = ```
+			SELECTEDVALUE('Date Selection'[Selection])
+			
+			```
+		lineageTag: 28c51312-2735-4a35-b6cf-d605e564bd67
+
+	measure YoY =
+			CALCULATE(DIVIDE([Total Crimes] - [PYC], [PYC]),ALL('Date Selection'[Selection])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 68096464-c0a2-4ebf-bb80-12eed19e2f64
+
+	measure 'Custom Date' = IF(SELECTEDVALUE('Date Selection'[Level])=9,1,0)
+		formatString: 0
+		lineageTag: cb965f77-a810-4bfa-8473-bf9c90d9043c
+
+	measure Color = ```
+			IF(RIGHT([Detial], 1) = "↑", "red", IF(RIGHT([Detial], 1) = "↓", "green", "white"))
+			
+			
+			```
+		lineageTag: 531b01ce-e4c5-4e68-8d73-d1dd3e4ffc33
+
+	measure PYCC =
+			
+			VAR sele = SELECTEDVALUE('Date Selection'[Selection])
+			RETURN
+			    SWITCH(
+			    TRUE(),
+			    sele = "7D ", CALCULATE([Total Crimes],SAMEPERIODLASTYEAR('Date Selection'[Date])),
+			    sele = "28D ",CALCULATE([Total Crimes],SAMEPERIODLASTYEAR('Date Selection'[Date])),
+			    sele = "90D ", CALCULATE([Total Crimes],SAMEPERIODLASTYEAR('Date Selection'[Date])),
+			   CALCULATE([Total Crimes],SAMEPERIODLASTYEAR('Date Selection'[Date])))
+		formatString: 0
+		lineageTag: 491f283b-0fac-4bd8-8bcb-561c3f001b70
+
+	measure SecondLast7Days = ```
+			
+			CALCULATE(
+			    [Total Crimes],
+			    FILTER(
+			        'Date', 
+			        'Date'[WeekCtr] = MAX('Date'[WeekCtr]) - 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 06a29d87-add5-4b61-afed-0320a33a56fc
+
+	column z
+		isHidden
+		formatString: 0
+		lineageTag: 717ead5b-6d59-432d-a66b-bfee92589669
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [z]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measurres = calculated
+		mode: import
+		source = ROW("z",1)
+
+	annotation PBI_Id = 54464f23471242e1acf711b4fdf81e7b
+

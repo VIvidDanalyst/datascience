@@ -1,0 +1,1748 @@
+cultureInfo en-GB
+
+	linguisticMetadata =
+			{
+			  "Version": "3.5.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "v2024_election__2_2024_election_2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fact 2024"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "2024 election (2)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "2024 election (2)": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2.constituency_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fact 2024",
+			          "ConceptualProperty": "Constituency name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "constituency name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "constituency name": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "constituency nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "constituency title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "constituency label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "constituency tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2.electorate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fact 2024",
+			          "ConceptualProperty": "Electorate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "electorate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "electorate": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "person": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "status": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "status.main_party_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Main party name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "main party name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "main party name": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "party": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "party": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "main party": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "main party": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "party name": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "party name": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "main party nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "main party title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "main party label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "main party tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "party nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "party title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "party label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "party tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "main festivity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "main revelry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
+			    },
+			    "status.candidate_result_position": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Candidate result position"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "candidate result position": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "candidate result position": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "position": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "position": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result position": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result position": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate result location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "candidate result situation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "result location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "result situation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "candidate result place": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "candidate result site": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "candidate result spot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "candidate result point": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "candidate result station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "status.color": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Color"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "color": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "color": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hue": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "tint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "shade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "dye": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "paint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pigment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "status.candidate_family_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Candidate family name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "candidate family name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "candidate family name": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "family": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "family": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate family": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate family": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate family nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "candidate family title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "candidate family label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "candidate family tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "domestic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "household": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "personal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "intimate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "private": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "candidate clan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "status.candidate_given_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Candidate given name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "candidate given name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "candidate given name": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "given": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "given": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate given": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate given": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "candidate given nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "candidate given title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "candidate given label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "candidate given tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "applicant given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "contender given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "entrant given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "runner given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "nominee given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "contestant given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        }
+			      ]
+			    },
+			    "status.full_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Winners",
+			          "ConceptualProperty": "Full Name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "full name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "full name": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "name": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "name": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "full nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "full title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "full label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "full tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "full surname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "complete name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "entire name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "whole name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "full given name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    }
+			  },
+			  "Relationships": {
+			    "status_has_full_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.full_name": {
+			          "Target": {
+			            "Entity": "status.full_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.full_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_full_names"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Name": {
+			              "Role": "status.full_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "full_names_are_names_IDs_of_statuses"
+			        }
+			      ]
+			    },
+			    "status_has_candidate_given_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.candidate_given_name": {
+			          "Target": {
+			            "Entity": "status.candidate_given_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.candidate_given_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_candidate_given_name"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Prepositions": [
+			              {
+			                "given": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "status.candidate_given_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_are_given_candidate_given_name"
+			        }
+			      ]
+			    },
+			    "status_has_candidate_family_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.candidate_family_name": {
+			          "Target": {
+			            "Entity": "status.candidate_family_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.candidate_family_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_candidate_family_names"
+			        }
+			      ]
+			    },
+			    "status_has_total_valid": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.total_valid": {
+			          "Target": {
+			            "Entity": "status.total_valid"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.total_valid"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_total_valid"
+			        }
+			      ]
+			    },
+			    "status_has_color": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.color": {
+			          "Target": {
+			            "Entity": "status.color"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.color"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_colors"
+			        }
+			      ]
+			    },
+			    "status_has_majority": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.majority": {
+			          "Target": {
+			            "Entity": "status.majority"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.majority"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_majorities"
+			        }
+			      ]
+			    },
+			    "status_has_vote": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.vote": {
+			          "Target": {
+			            "Entity": "status.vote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.vote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_votes"
+			        }
+			      ]
+			    },
+			    "status_has_total_invalid_vote": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.total_invalid_vote": {
+			          "Target": {
+			            "Entity": "status.total_invalid_vote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.total_invalid_vote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_total_invalid_votes"
+			        }
+			      ]
+			    },
+			    "status_has_candidate_result_position": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.candidate_result_position": {
+			          "Target": {
+			            "Entity": "status.candidate_result_position"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.candidate_result_position"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_candidate_result_positions"
+			        }
+			      ]
+			    },
+			    "status_has_main_party_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.main_party_name": {
+			          "Target": {
+			            "Entity": "status.main_party_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.main_party_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_main_party_names"
+			        }
+			      ]
+			    },
+			    "status_has_constituency_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Winners"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "status": {
+			          "Target": {
+			            "Entity": "status"
+			          }
+			        },
+			        "status.constituency_name": {
+			          "Target": {
+			            "Entity": "status.constituency_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "status"
+			            },
+			            "Object": {
+			              "Role": "status.constituency_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "statuses_have_constituency_names"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_total_invalid_vote": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.total_invalid_vote": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.total_invalid_vote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.total_invalid_vote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_total_invalid_votes"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_total_electorate_valid": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.total_electorate_valid": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.total_electorate_valid"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.total_electorate_valid"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_total_electorate_valid"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_total_electorate": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.total_electorate": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.total_electorate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.total_electorate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_total_electorates"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_invalid_vote": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.invalid_vote": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.invalid_vote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.invalid_vote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_invalid_votes"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_valid_vote": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.valid_vote": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.valid_vote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.valid_vote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_valid_votes"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_electorate1": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.electorate1": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.electorate1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.electorate1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_electorates"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_electorate": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.electorate": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.electorate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.electorate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_electorates1"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_constituency_geographic_code": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.constituency_geographic_code": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.constituency_geographic_code"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.constituency_geographic_code"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_constituency_geographic_codes"
+			        }
+			      ]
+			    },
+			    "v2024_election__2_2024_election_2_has_constituency_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Fact 2024"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "v2024_election__2_2024_election_2": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2"
+			          }
+			        },
+			        "v2024_election__2_2024_election_2.constituency_name": {
+			          "Target": {
+			            "Entity": "v2024_election__2_2024_election_2.constituency_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "v2024_election__2_2024_election_2"
+			            },
+			            "Object": {
+			              "Role": "v2024_election__2_2024_election_2.constituency_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing2024_election_2_have_constituency_names"
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

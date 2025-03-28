@@ -1,0 +1,73 @@
+table postdom
+	lineageTag: 8c94ab32-f27a-4210-8f97-98f16ad0452a
+	sourceLineageTag: [dbo].[postdom]
+
+	column pcds
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 32c57668-1926-447c-b5ed-501482a0fbcf
+		sourceLineageTag: pcds
+		summarizeBy: none
+		sourceColumn: pcds
+
+		annotation SummarizationSetBy = Automatic
+
+	column lsoa21cd
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ade29462-45e7-44d7-9779-8c3268c94f40
+		sourceLineageTag: lsoa21cd
+		summarizeBy: none
+		sourceColumn: lsoa21cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column msoa21cd
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3e8610ad-3313-44ab-8b40-9fa1e72935b8
+		sourceLineageTag: msoa21cd
+		summarizeBy: none
+		sourceColumn: msoa21cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column lsoa21nm
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 38a03fb6-031f-4851-8e6d-2f9a30bdff86
+		sourceLineageTag: lsoa21nm
+		summarizeBy: none
+		sourceColumn: lsoa21nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column msoa21nm
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b83fa142-f1f6-4085-93a4-1535e05e636e
+		sourceLineageTag: msoa21nm
+		summarizeBy: none
+		sourceColumn: msoa21nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column ladnm
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ae602d1c-2c76-4be7-b9b5-068c74f66dc5
+		sourceLineageTag: ladnm
+		summarizeBy: none
+		sourceColumn: ladnm
+
+		annotation SummarizationSetBy = Automatic
+
+	partition postdom = entity
+		mode: directLake
+		source
+			entityName: postdom
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

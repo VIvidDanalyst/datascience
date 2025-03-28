@@ -1,0 +1,48 @@
+table Comparismparam
+	lineageTag: b74f6910-6390-4729-bce7-1fb754f54c05
+
+	column Comparismparam
+		lineageTag: 7c425bab-ae12-4f71-8762-6ec54feb2880
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Comparismparam Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Comparismparam Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Comparismparam Fields'
+		isHidden
+		lineageTag: e7d45cce-7999-4393-b234-41904522be6f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Comparismparam Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Comparismparam Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0df5f044-16d6-4246-80c6-00d1b2c8abf3
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Comparismparam = calculated
+		mode: import
+		source =
+				{
+				    ("Safety", NAMEOF('Measurres'[Average Safety]), 0),
+				    ("Trust", NAMEOF('Measurres'[Average Trust]), 1)
+				}
+
+	annotation PBI_Id = 9af6e80189d34260b8ebfa7e5710e72c
+

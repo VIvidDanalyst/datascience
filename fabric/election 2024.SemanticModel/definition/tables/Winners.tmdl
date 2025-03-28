@@ -1,0 +1,113 @@
+table Winners
+	lineageTag: c5d441a0-9650-4908-86a3-7a23842c0057
+
+	column 'Main party name'
+		dataType: string
+		lineageTag: 384a7325-1e2d-4e54-a49d-93641817b0b0
+		summarizeBy: none
+		sourceColumn: Main party name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate result position'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9dfa356f-1b80-4552-9e12-8ae0be75ca0c
+		summarizeBy: none
+		sourceColumn: Candidate result position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color = ```
+			SWITCH(
+			    TRUE(),
+			    'Winners'[Main party name]="Labour", "#FF0000",
+			    'Winners'[Main party name]="Conservative", "#0000FF",
+			     'Winners'[Main party name]="Liberal Democrat", "#FFA007",
+			   'Winners'[Main party name]="Scottish National Party", "#EDF681",
+			    'Winners'[Main party name]="Sinn Féin", "#006671",
+			    'Winners'[Main party name]="Reform UK", "#00B3EC",
+			    'Winners'[Main party name]="Green Party", "#40B835",
+			    'Winners'[Main party name]="Democratic Unionist Party", "#FD6A36",
+			    'Winners'[Main party name]="Plaid Cymru", "#008846",
+			    'Winners'[Main party name]="Social Democratic &amp; Labour Party", "#1EA277",
+			    'Winners'[Main party name]="Alliance", "#C1AF26",
+			    'Winners'[Main party name]="Ulster Unionist Party", "#95CDF6",
+			    'Winners'[Main party name]="Traditional Unionist Voice", "#013A72",
+			    "#000000"  // Default color
+			)
+			
+			```
+		lineageTag: 8b7542b4-0806-43c6-9fd2-ff32092daf93
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate family name'
+		dataType: string
+		lineageTag: 5893adce-c859-4482-a9fd-f09d12329a0a
+		summarizeBy: none
+		sourceColumn: Candidate family name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate given name'
+		dataType: string
+		lineageTag: a4ad4e67-b86d-4453-8a37-0d793adc6d25
+		summarizeBy: none
+		sourceColumn: Candidate given name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name' = ```
+			'Winners'[Candidate given name] & "  " & 'Winners'[Candidate family name] 
+			```
+		lineageTag: 518b21d8-2f44-4a87-bb79-1696476c3eea
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Constituency name'
+		dataType: string
+		lineageTag: afcc20aa-1295-467e-90cc-eb137a322961
+		summarizeBy: none
+		sourceColumn: Constituency name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Election result summary'
+		dataType: string
+		lineageTag: 92c1f3a7-bde2-467b-87fd-95b4a0538032
+		summarizeBy: none
+		sourceColumn: Election result summary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Majority
+		dataType: int64
+		formatString: 0
+		lineageTag: af9a540a-125a-4722-8290-235a3e4c58df
+		summarizeBy: none
+		sourceColumn: Majority
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Winners = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\candidate-level-results-general-election-04-07-2024 (1).csv"),[Delimiter=",", Columns=54, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Parliament number", Int64.Type}, {"Parliament summoned on", type date}, {"Parliament dissolved on", type text}, {"Parliament Wikidata ID", type text}, {"Parliament London Gazette citation", type text}, {"Parliament URL", type text}, {"General election polling date", type date}, {"General election is notional", type logical}, {"Total electorate in general election", Int64.Type}, {"Total valid votes in general election", Int64.Type}, {"Total invalid votes in general election", Int64.Type}, {"General election URL", type text}, {"Country name", type text}, {"Country geographic code", type text}, {"Country URL", type text}, {"English region name", type text}, {"English region geographic code", type text}, {"English region URL", type text}, {"Constituency name", type text}, {"Constituency geographic code", type text}, {"Constituency designation", type text}, {"Constituency URL", type text}, {"Boundary set start date", type date}, {"Boundary set end date", type text}, {"Boundary set URL", type text}, {"Electorate", Int64.Type}, {"Election polling date", type date}, {"Election is by-election", type logical}, {"Declaration time", type text}, {"Election valid vote count", Int64.Type}, {"Election invalid vote count", Int64.Type}, {"Election URL", type text}, {"Election result summary", type text}, {"Candidate family name", type text}, {"Candidate given name", type text}, {"Candidate MNIS ID", Int64.Type}, {"Candidate is sitting MP", type logical}, {"Candidate is former MP", type logical}, {"Candidate Member URL", type text}, {"Main party name", type text}, {"Main party abbreviation", type text}, {"Main party Electoral Commission ID", type text}, {"Main party MNIS ID", Int64.Type}, {"Main party URL", type text}, {"Adjunct party name", type text}, {"Adjunct party abbreviation", type text}, {"Adjunct party Electoral Commission ID", type text}, {"Candidate is standing as Commons Speaker", type logical}, {"Candidate is standing as independent", type logical}, {"Candidate vote count", Int64.Type}, {"Candidate vote share", type number}, {"Candidate vote change", type number}, {"Majority", Int64.Type}, {"Candidate result position", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Parliament number", "Parliament summoned on", "Parliament dissolved on", "General election polling date", "General election is notional", "Total electorate in general election", "Total valid votes in general election", "Total invalid votes in general election", "Country name", "Country geographic code", "Country URL", "English region name", "English region geographic code", "Constituency name", "Constituency geographic code", "Constituency designation", "Constituency URL", "Electorate", "Election polling date", "Election is by-election", "Declaration time", "Election valid vote count", "Election invalid vote count", "Election URL", "Election result summary", "Candidate family name", "Candidate given name", "Candidate MNIS ID", "Candidate is sitting MP", "Candidate is former MP", "Candidate Member URL", "Main party name", "Main party abbreviation", "Main party URL", "Adjunct party name", "Adjunct party abbreviation", "Adjunct party Electoral Commission ID", "Candidate is standing as Commons Speaker", "Candidate is standing as independent", "Candidate vote count", "Candidate vote share", "Candidate vote change", "Majority", "Candidate result position"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Other Columns",{"Parliament dissolved on", "English region geographic code", "Election polling date", "Election is by-election", "Declaration time", "Election URL", "Candidate MNIS ID", "Candidate Member URL", "Main party URL", "Adjunct party name", "Adjunct party abbreviation", "Adjunct party Electoral Commission ID", "Parliament summoned on", "General election polling date", "General election is notional", "Country URL", "English region name", "Constituency URL", "Parliament number"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Candidate result position] = 1)),
+				    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows","","Independent Candidate",Replacer.ReplaceValue,{"Main party name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Replaced Value",{"Constituency name", "Election result summary", "Candidate family name", "Candidate given name", "Main party name", "Majority", "Candidate result position"})
+				in
+				    #"Removed Other Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,237 @@
+table Date
+	lineageTag: 7003840b-aa6a-4911-94c0-285b8f3dfcc8
+
+	column Date
+		formatString: Long Date
+		lineageTag: 1c6e37e7-4f04-472a-aa62-de15345dfb9e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		formatString: 0
+		lineageTag: 874a27a5-df2e-4106-bb70-850f30fe9411
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ISOWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day = FORMAT('Date'[Date],"ddd")
+		lineageTag: 0dc7cbdb-51c4-4ee3-acf8-e694bd3a7f0c
+		summarizeBy: none
+		sortByColumn: Weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		formatString: 0
+		lineageTag: 8e97a418-becd-4a77-b402-f6c205a99402
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Weekday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Year'
+		formatString: 0
+		lineageTag: d2a54d6e-a129-4038-a74b-cb0fd8ba36a6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ISO Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekCtr
+		dataType: int64
+		lineageTag: f554b472-fc79-4d4e-8061-133b1219ed43
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekCtr]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year-week
+		formatString: 0
+		lineageTag: 792129a9-2716-4e9e-9674-ed7b89395343
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-week]
+
+		annotation SummarizationSetBy = User
+
+	column 'Previous Year'
+		formatString: 0
+		lineageTag: 6a881f0b-e56e-4991-b893-d6793c24c034
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Previous Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: ac5c5f97-4a87-4b6c-9757-6e2c3854963f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthCtr
+		formatString: 0
+		lineageTag: ad849bec-f9f4-4c84-a5fd-cb03b20ee19d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthCtr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = QUARTER('Date'[Date])
+		formatString: 0
+		lineageTag: a129f334-9ff0-4b57-a265-e0ec3c6fd844
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		formatString: 0
+		lineageTag: be120bb2-3a34-472f-9d92-8c23f4154f5d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Quarter = ```
+			
+			        ([Year] * 100) + [Quarter]
+			```
+		formatString: 0
+		lineageTag: 575a5f05-db43-4b20-9ce5-69056e4abd9d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period90Days = ```
+			
+			VAR LatestDate = CALCULATE(MAX('Date'[Date]), ALL('Date'))
+			VAR DaysToEnd = DATEDIFF('Date'[Date], LatestDate, DAY)
+			VAR PeriodNumber = INT(DIVIDE(DaysToEnd, 90)) + 1
+			RETURN PeriodNumber
+			
+			```
+		formatString: 0
+		lineageTag: 62a1087a-f202-43d9-b85b-e15c5e6b18cc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dayw = WEEKDAY('Date'[Date],3)
+		formatString: 0
+		lineageTag: 22b65878-26a5-4359-addd-9c165964fc53
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT('Date'[Date],"MMM")
+		lineageTag: 31875a71-5684-4dc1-8557-26fbdbf96354
+		summarizeBy: none
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month-Year = ([Year] * 100) + [Month]
+		formatString: 0
+		lineageTag: 61bb06b7-eab5-49d8-bcb8-a18be0bd5155
+		summarizeBy: sum
+		sortByColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR('Date'[Date])
+		formatString: 0
+		lineageTag: 1ee74d0b-70d6-4052-b72c-dc3ff7dc9f6f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YM = FORMAT('Date'[Date],"MMM/YY")
+		lineageTag: f82173ca-476a-4f62-806b-d38b185fcedf
+		summarizeBy: none
+		sortByColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Year Hierarchy'
+		lineageTag: 035b4ebc-34e2-46d8-b874-e2d1f3ebfd4d
+
+		level Year
+			lineageTag: 20ae0013-3d6c-496c-a886-ff527cbbf7cc
+			column: Year
+
+		level Quarter
+			lineageTag: 1f81ff98-a613-45a7-8533-2ed436bb4553
+			column: Quarter
+
+		level 'Month Name'
+			lineageTag: ba706a42-7b29-45f6-96f3-2d7a9a4b0291
+			column: 'Month Name'
+
+		level Date
+			lineageTag: fc8c82d7-e132-4774-812f-fbbed35a98bd
+			column: Date
+
+	partition Date = calculated
+		mode: import
+		source = ```
+				
+				VAR StartYear = 2016
+				VAR EndYear = Year(MAX('Crime Chicago'[Date]))
+				
+				// StartDate
+				VAR ApproxStartDate = DATE(StartYear, 1, 4)
+				VAR ExactStartDate = ApproxStartDate - WEEKDAY(ApproxStartDate, 3)
+				
+				// EndDate
+				VAR ApproxEndDate = MAX('Crime Chicago'[Date])
+				VAR ExactISOWeek = ApproxEndDate - (WEEKDAY(ApproxEndDate, 3))
+				VAR ExactEndDate = ExactISOWeek + (7 - WEEKDAY(ExactISOWeek, 3))
+				
+				
+				RETURN
+				
+				ADDCOLUMNS(
+				    ADDCOLUMNS(
+				        ADDCOLUMNS(
+				            CALENDAR(ExactStartDate, ExactEndDate-1),
+				            "ISOWeek", WEEKNUM([Date], 21),
+				            "Weekday", WEEKDAY([Date], 3),
+				            "ISO Year", YEAR([Date] - WEEKDAY([Date], 3) + 3)
+				        ),
+				
+				        "Month",MONTH([Date]), 
+				        "WeekCtr",
+				            ROUNDDOWN(([Date] - ExactStartDate) / 7, 0)
+				
+				    ),
+				
+				    "MonthCtr",
+				        ([ISO year] - StartYear) * 12 + [Month],
+				
+				    "Year-week",
+				        ([ISO Year] * 100) + [ISOWeek],
+				
+				    "Year-Month",
+				        ([ISO year] * 100) + [Month],  
+				    "Previous Year",
+				        [ISO Year] - 1
+				)
+				```
+
+	annotation PBI_Id = 2fd391256fa04f2dab0e8a54b522f869
+

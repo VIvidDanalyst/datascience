@@ -1,0 +1,50 @@
+table 'Parameter 2'
+	lineageTag: 2ea99a4b-b47e-4dd3-a603-6d872e6b00ff
+
+	column Parameter
+		lineageTag: a38e3c14-6df4-4fd8-a497-8521d8925a54
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 2d7d7b0f-132c-42b9-9cda-965e83aaee07
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: ac6a849f-cb5d-4e68-92aa-168685c676ba
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Parameter 2' = calculated
+		mode: import
+		source =
+				{
+				    ("Last 7 Days ::", NAMEOF('Measurres'[Last 7 Days ::]), 0),
+				    ("Last 28 Days", NAMEOF('Measurres'[Last 28 Days]), 1),
+				    ("Last 90 Days ::", NAMEOF('Measurres'[Last 90 Days ::]), 2),
+				    ("Current Year::", NAMEOF('Measurres'[Current Year::]), 3)
+				}
+
+	annotation PBI_Id = e6a51656549f4c6e8e9b72cbae246009
+

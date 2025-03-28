@@ -1,0 +1,41 @@
+table District
+	lineageTag: cb04fc19-ed38-460c-8afd-4acbc6dc76bc
+
+	column 'District Category'
+		dataType: string
+		lineageTag: b97b1a73-deec-46db-ae87-6b6df71de1b6
+		summarizeBy: none
+		sourceColumn: District Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'District Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: ed1d3d5c-be11-40d7-aa01-a0aa9aa86fae
+		summarizeBy: none
+		sourceColumn: District Number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition District = m
+		mode: import
+		source =
+				let
+				    Source = Json.Document(File.Contents("D:\Boundaries - Police Districts (current).json")),
+				    #"Converted to Table" = Table.FromRecords({Source}),
+				    #"Expanded features" = Table.ExpandListColumn(#"Converted to Table", "features"),
+				    #"Expanded features1" = Table.ExpandRecordColumn(#"Expanded features", "features", {"type", "geometry", "properties"}, {"features.type", "features.geometry", "features.properties"}),
+				    #"Expanded features.geometry" = Table.ExpandRecordColumn(#"Expanded features1", "features.geometry", {"type", "coordinates"}, {"features.geometry.type", "features.geometry.coordinates"}),
+				    #"Expanded features.geometry.coordinates" = Table.ExpandListColumn(#"Expanded features.geometry", "features.geometry.coordinates"),
+				    #"Expanded features.properties" = Table.ExpandRecordColumn(#"Expanded features.geometry.coordinates", "features.properties", {"dist_label", "dist_num"}, {"features.properties.dist_label", "features.properties.dist_num"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded features.properties",{{"type", type text}, {"features.type", type text}, {"features.geometry.type", type text}, {"features.geometry.coordinates", type any}, {"features.properties.dist_label", type text}, {"features.properties.dist_num", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"features.geometry.coordinates", "features.properties.dist_label", "features.properties.dist_num"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Other Columns",{"features.geometry.coordinates"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"features.properties.dist_num"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"features.properties.dist_num", "District Number"}, {"features.properties.dist_label", "District Category"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

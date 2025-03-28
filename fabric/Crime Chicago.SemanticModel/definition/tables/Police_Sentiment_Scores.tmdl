@@ -1,0 +1,79 @@
+table Police_Sentiment_Scores
+	lineageTag: c3360134-23ed-4ba9-bdde-5d6f1607d212
+
+	column DISTRICT
+		dataType: int64
+		formatString: 0
+		lineageTag: 45c1f167-82f0-40cc-9231-8e779817e0bc
+		summarizeBy: none
+		sourceColumn: DISTRICT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAFETY
+		dataType: double
+		lineageTag: a9be6d86-8446-4099-8d5f-2e6f2278b44e
+		summarizeBy: sum
+		sourceColumn: SAFETY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TRUST
+		dataType: double
+		lineageTag: 62bcdb57-2d00-4e44-8ab1-33dc17483034
+		summarizeBy: sum
+		sourceColumn: TRUST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AREA
+		dataType: string
+		lineageTag: 6eeb5cd3-8dc6-4e28-bb9d-4092899ec690
+		summarizeBy: none
+		sourceColumn: AREA
+
+		annotation SummarizationSetBy = Automatic
+
+	column START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dc19bc71-f927-48ab-8edb-b69d94f676db
+		summarizeBy: none
+		sourceColumn: START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column END_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7b787e43-3066-45ab-bf0a-fc221f3342d0
+		summarizeBy: none
+		sourceColumn: END_DATE
+
+		variation Variation
+			isDefault
+			relationship: 2ffc0113-81db-4a8a-a1c5-22c2742781d0
+			defaultHierarchy: LocalDateTable_f6e0d7c4-a131-4166-a3e0-daf1026273ff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Police_Sentiment_Scores = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Police_Sentiment_Scores.csv"),[Delimiter=",", Columns=75, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ORG_LEVEL", type text}, {"CITY", type text}, {"AREA", type text}, {"DISTRICT", Int64.Type}, {"SECTOR", Int64.Type}, {"SAFETY", type number}, {"S_RACE_AFRICAN_AMERICAN", type number}, {"S_RACE_ASIAN_AMERICAN", type number}, {"S_RACE_HISPANIC", type number}, {"S_RACE_WHITE", type number}, {"S_RACE_OTHER", type number}, {"S_AGE_LOW", type number}, {"S_AGE_MEDIUM", type number}, {"S_AGE_HIGH", type number}, {"S_SEX_FEMALE", type number}, {"S_SEX_MALE", type number}, {"S_EDUCATION_LOW", type number}, {"S_EDUCATION_MEDIUM", type number}, {"S_EDUCATION_HIGH", type number}, {"S_INCOME_LOW", type number}, {"S_INCOME_MEDIUM", type number}, {"S_INCOME_HIGH", type number}, {"TRUST", type number}, {"T_RACE_AFRICAN_AMERICAN", type number}, {"T_RACE_ASIAN_AMERICAN", type number}, {"T_RACE_HISPANIC", type number}, {"T_RACE_WHITE", type number}, {"T_RACE_OTHER", type number}, {"T_AGE_LOW", type number}, {"T_AGE_MEDIUM", type number}, {"T_AGE_HIGH", type number}, {"T_SEX_FEMALE", type number}, {"T_SEX_MALE", type number}, {"T_EDUCATION_LOW", type number}, {"T_EDUCATION_MEDIUM", type number}, {"T_EDUCATION_HIGH", type number}, {"T_INCOME_LOW", type number}, {"T_INCOME_MEDIUM", type number}, {"T_INCOME_HIGH", type number}, {"T_LISTEN", type number}, {"T_LISTEN_RACE_AFRICAN_AMERICAN", type number}, {"T_LISTEN_RACE_ASIAN_AMERICAN", type number}, {"T_LISTEN_RACE_HISPANIC", type number}, {"T_LISTEN_RACE_WHITE", type number}, {"T_LISTEN_RACE_OTHER", type number}, {"T_LISTEN_AGE_LOW", type number}, {"T_LISTEN_AGE_MEDIUM", type number}, {"T_LISTEN_AGE_HIGH", type number}, {"T_LISTEN_SEX_FEMALE", type number}, {"T_LISTEN_SEX_MALE", type number}, {"T_LISTEN_EDUCATION_LOW", type number}, {"T_LISTEN_EDUCATION_MEDIUM", type number}, {"T_LISTEN_EDUCATION_HIGH", type number}, {"T_LISTEN_INCOME_LOW", type number}, {"T_LISTEN_INCOME_MEDIUM", type number}, {"T_LISTEN_INCOME_HIGH", type number}, {"T_RESPECT", type number}, {"T_RESPECT_RACE_AFRICAN_AMERICAN", type number}, {"T_RESPECT_RACE_ASIAN_AMERICAN", type number}, {"T_RESPECT_RACE_HISPANIC", type number}, {"T_RESPECT_RACE_WHITE", type number}, {"T_RESPECT_RACE_OTHER", type number}, {"T_RESPECT_AGE_LOW", type number}, {"T_RESPECT_AGE_MEDIUM", type number}, {"T_RESPECT_AGE_HIGH", type number}, {"T_RESPECT_SEX_FEMALE", type number}, {"T_RESPECT_SEX_MALE", type number}, {"T_RESPECT_EDUCATION_LOW", type number}, {"T_RESPECT_EDUCATION_MEDIUM", type number}, {"T_RESPECT_EDUCATION_HIGH", type number}, {"T_RESPECT_INCOME_LOW", type number}, {"T_RESPECT_INCOME_MEDIUM", type number}, {"T_RESPECT_INCOME_HIGH", type number}, {"START_DATE", type text}, {"END_DATE", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"AREA", "DISTRICT", "SAFETY", "TRUST", "START_DATE", "END_DATE"}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Removed Other Columns", {{"START_DATE", type datetime}}, "en-US"),
+				    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"END_DATE", type datetime}}, "en-US"),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type with Locale1", each ([DISTRICT] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

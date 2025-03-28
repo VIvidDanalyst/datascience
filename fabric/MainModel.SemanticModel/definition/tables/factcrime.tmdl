@@ -1,0 +1,123 @@
+table factcrime
+	lineageTag: e3aaef5b-7c04-4cd1-9948-53920a3d8e6f
+	sourceLineageTag: [dbo].[factcrime]
+
+	column CrimeId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: afedfe5e-b02c-407b-91ac-45909eff367b
+		sourceLineageTag: CrimeId
+		summarizeBy: none
+		sourceColumn: CrimeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d27613d6-ec0a-4bd4-825f-f7a1c237a8c1
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportedBy
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a3d293e2-575a-462f-a91d-7bc3448c4b75
+		sourceLineageTag: ReportedBy
+		summarizeBy: none
+		sourceColumn: ReportedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column FallsWithin
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 096018a5-9494-4c23-9c4c-7fd0516cf180
+		sourceLineageTag: FallsWithin
+		summarizeBy: none
+		sourceColumn: FallsWithin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b37ac9c8-5927-40a7-9e69-55ba4c169234
+		sourceLineageTag: Longitude
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95f42249-e51b-421c-b12d-eb7e06d51b24
+		sourceLineageTag: Latitude
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 257c1927-f15e-486d-9de7-e75f538a38dc
+		sourceLineageTag: Location
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column LsoaCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8c2ae660-542b-44e0-a72d-bec0e3d5c1a1
+		sourceLineageTag: LsoaCode
+		summarizeBy: none
+		sourceColumn: LsoaCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column LsoaName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e1dc92af-bc0b-4580-a601-771ce8ebb9ef
+		sourceLineageTag: LsoaName
+		summarizeBy: none
+		sourceColumn: LsoaName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CrimeType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 97f6a933-4c73-4939-9cd3-4785788f3bb6
+		sourceLineageTag: CrimeType
+		summarizeBy: none
+		sourceColumn: CrimeType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Outcome
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b535841f-73df-4698-8d52-828fbb997d7d
+		sourceLineageTag: Outcome
+		summarizeBy: none
+		sourceColumn: Outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	partition factcrime = entity
+		mode: directLake
+		source
+			entityName: factcrime
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

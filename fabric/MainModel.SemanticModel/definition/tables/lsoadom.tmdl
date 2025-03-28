@@ -1,0 +1,33 @@
+table lsoadom
+	lineageTag: ad0efaa0-49f7-40bc-92b4-3a912324f3fe
+	sourceLineageTag: [dbo].[lsoadom]
+
+	column LsoaCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b9e2952d-364b-4ec4-b788-b0bbacd16e68
+		sourceLineageTag: LsoaCode
+		summarizeBy: none
+		sourceColumn: LsoaCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column LsoaName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 373536c0-e602-4d71-9b78-b31cfffc0ddc
+		sourceLineageTag: LsoaName
+		summarizeBy: none
+		sourceColumn: LsoaName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lsoadom = entity
+		mode: directLake
+		source
+			entityName: lsoadom
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

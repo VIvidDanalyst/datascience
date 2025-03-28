@@ -1,0 +1,49 @@
+table DTP
+	lineageTag: 66151823-fc21-482f-82e2-e81b757cdf2f
+
+	column DTP
+		lineageTag: cfa278ec-1d08-4ed0-8171-634295d87a21
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'DTP Order'
+
+		relatedColumnDetails
+			groupByColumn: 'DTP Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DTP Fields'
+		isHidden
+		lineageTag: 02059c08-402f-4acf-8f94-9fe3a0971e1b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'DTP Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DTP Order'
+		isHidden
+		formatString: 0
+		lineageTag: 7ec355af-ca98-42a0-8a61-3e3bd3c5cf42
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DTP = calculated
+		mode: import
+		source =
+				{
+				    ("WeekCtr", NAMEOF('Date'[WeekCtr]), 0),
+				    ("MonthCtr", NAMEOF('Date'[MonthCtr]), 1),
+				    ("Period90Days", NAMEOF('Date'[Period90Days]), 2)
+				}
+
+	annotation PBI_Id = 9012c4de807c4423bd7f10dd6ca32de3
+

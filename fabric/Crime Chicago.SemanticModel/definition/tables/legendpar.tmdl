@@ -1,0 +1,54 @@
+table legendpar
+	lineageTag: 68cfcb85-e824-4094-a2df-f0e4f2fe5547
+
+	column legendpar
+		lineageTag: 9f0fae3b-f720-4159-9024-0c65da743b8d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'legendpar Order'
+
+		relatedColumnDetails
+			groupByColumn: 'legendpar Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'legendpar Fields'
+		isHidden
+		lineageTag: dd2ecf61-0c9c-4394-94ad-63be1ab4847d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'legendpar Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'legendpar Order'
+		isHidden
+		formatString: 0
+		lineageTag: 998d2fa7-ebb6-43b0-9aa8-b2dbbb5393b5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title = IF(legendpar[legendpar Order]=1,"Domestic Crime Trends","Crimes Resulting in Arrests")
+		lineageTag: bb991227-7100-4526-af7f-7c2ae75a56cb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition legendpar = calculated
+		mode: import
+		source =
+				{
+				    ("Arrest", NAMEOF('Crime Chicago'[Arrest]), 0),
+				    ("Domestic", NAMEOF('Crime Chicago'[Domestic]), 1)
+				}
+
+	annotation PBI_Id = 95591a72f7384c69b62cca15c28e33b6
+

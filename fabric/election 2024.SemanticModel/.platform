@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "election 2024"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "88ee6b6d-73a1-82e5-493a-1786ee33bfca"
+  }
+}

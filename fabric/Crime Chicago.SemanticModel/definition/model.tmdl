@@ -1,0 +1,33 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.131.1203.0 (24.07)
+
+annotation PBI_QueryOrder = ["RangeStart","RangeEnd","Crime Chicago","Community","District","Wards","Beats","Police_Sentiment_Scores"]
+
+ref table 'Crime Chicago'
+ref table Beats
+ref table Police_Sentiment_Scores
+ref table 'Crime Category'
+ref table Measurres
+ref table Date
+ref table 'Date Selection'
+ref table Comparismparam
+ref table District
+ref table Parameter
+ref table legendpar
+ref table 'Parameter 2'
+ref table DateTableTemplate_024ad768-ab95-4998-9d4d-cf5d4cd47c4b
+ref table LocalDateTable_f6e0d7c4-a131-4166-a3e0-daf1026273ff
+ref table DTP
+ref table LocalDateTable_cec45b5a-93ec-4e5c-a40d-58290b33cbc7
+
+ref cultureInfo en-GB
+

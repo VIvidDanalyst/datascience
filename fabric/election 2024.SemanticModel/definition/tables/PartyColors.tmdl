@@ -1,0 +1,48 @@
+table PartyColors
+	lineageTag: 3331e095-270f-432b-a43e-0621b7590c2d
+
+	column 'Main party name'
+		lineageTag: 4fe01a4c-e015-4d2d-8dc9-21c12cbf1bc0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Main party name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		lineageTag: cb8888b5-3f0a-489e-b5c2-78de63947d02
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Color]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PartyColors = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "Main party name", STRING,
+				    "Color", STRING,
+				    {
+				        {"Labour", "#FF0000"},
+				        {"Conservative", "#0000FF"},
+				        {"Liberal Democrat", "#FFA007"},
+				        {"Scottish National Party", "#EDF681"},
+				        {"Sinn Féin", "#006671"},
+				        {"Reform UK", "#00B3EC"},
+				        {"Green Party", "#40B835"},
+				        {"Democratic Unionist Party", "#FD6A36"},
+				        {"Plaid Cymru", "#008846"},
+				        {"Social Democratic & Labour Party", "#1EA277"},
+				        {"Alliance", "#C1AF26"},
+				        {"Ulster Unionist Party", "#95CDF6"},
+				        {"Traditional Unionist Voice", "#013A72"},
+				        {"Independent Candidate","#000000" }
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 3d98ee3ceb684876beb2d820af722448
+

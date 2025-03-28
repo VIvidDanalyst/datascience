@@ -1,0 +1,102 @@
+table 'Date Selection'
+	lineageTag: 19577654-d161-468a-b414-a16d85c5665c
+
+	column Date
+		formatString: General Date
+		lineageTag: 471469b0-97b5-4b6e-94bf-5e7985982939
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Date[Date]
+
+		variation Variation
+			isDefault
+			relationship: 4dd484d7-b8ec-4e97-916b-6b922394d488
+			defaultHierarchy: LocalDateTable_cec45b5a-93ec-4e5c-a40d-58290b33cbc7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Selection
+		lineageTag: fc289973-6eee-4abc-ab53-9d649ac7e569
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Selection]
+		sortByColumn: Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level
+		formatString: 0
+		lineageTag: 98e1b669-b2c4-4ea0-9d2d-01186d6587f1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Level]
+
+		annotation SummarizationSetBy = User
+
+	partition 'Date Selection' = calculated
+		mode: import
+		source =
+				
+				VAR CurrentWeekCtr = MAX('Date'[WeekCtr])
+				VAR LastTwoFullWeeks =
+				    ADDCOLUMNS(
+				        CALCULATETABLE(
+				            VALUES('Date'[Date]),
+				            'Date'[WeekCtr] = CurrentWeekCtr
+				        ),
+				        "Selection", "7D",
+				        "Level", 2
+				    )
+				
+				VAR LevelAll =
+				    ADDCOLUMNS(
+				        VALUES('Date'[Date]),
+				        "Selection", "Custom",
+				        "Level", 9
+				    )
+				
+				VAR CurrentYear = MAX('Date'[ISO Year])
+				VAR PreviousISOYear =
+				    ADDCOLUMNS(
+				        CALCULATETABLE(
+				            VALUES('Date'[Date]),
+				            'Date'[ISO Year] = MAX('Date'[ISO Year])
+				        ),
+				        "Selection", "2024",
+				        "Level", 7
+				    )
+				
+				VAR CurrentPeriod = Min('Date'[Period90Days])
+				VAR LastFivePeriods =
+				    ADDCOLUMNS(
+				        CALCULATETABLE(
+				            VALUES('Date'[Date]),
+				            'Date'[Period90Days] <= CurrentPeriod ,
+				            'Date'[Date] <= MAX('Date'[Date])
+				        ),
+				        "Selection", "90D",
+				        "Level", 5
+				    )
+				VAR CurrentMonth = Max('Date'[Date])-27
+				VAR LastMonth =
+				    ADDCOLUMNS(
+				        CALCULATETABLE(
+				            VALUES('Date'[Date]),
+				            'Date'[Date] >= CurrentMonth ,
+				            'Date'[Date] <= MAX('Date'[Date])
+				        ),
+				        "Selection", "28D",
+				        "Level", 3
+				    )
+				
+				RETURN
+				UNION(
+				    LastTwoFullWeeks,
+				    LastMonth,
+				    LevelAll,
+				    PreviousISOYear,
+				    LastFivePeriods
+				)
+
+	annotation PBI_Id = 818ccf49940e4845998130139ad9d1f8
+

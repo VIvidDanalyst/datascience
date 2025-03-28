@@ -1,0 +1,60 @@
+table Parameter
+	lineageTag: ab4bd821-9db0-4ed1-b965-cb491163a9ab
+
+	column Parameter
+		lineageTag: 9393a3dc-9ddf-4100-876a-ed2f22fa837b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: f7945edb-73ca-42b9-8c20-672104ddf90e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0ad6a765-07b4-42ca-9218-5aa7c905b9f8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title =
+			SWITCH(TRUE(),
+			Parameter[Parameter Order]=3,"Crimes By Beats",
+			Parameter[Parameter Order]=1,"Crimes By Community",
+			"Crimes By District"
+			)
+		lineageTag: 3a36467e-89db-4643-a1ae-88312f4500b8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("District", NAMEOF('Crime Chicago'[District Category]), 0),
+				    ("Community", NAMEOF('Crime Chicago'[Community.community]), 1),
+				    ("Beats", NAMEOF('Crime Chicago'[Beat]), 3)
+				}
+
+	annotation PBI_Id = 64fb135c17c547fc9e9fec56c619b9c4
+

@@ -1,0 +1,44 @@
+expression RangeStart = #datetime(2022, 1, 1, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: f69747c1-238f-4a6e-9451-a2a0b5e10807
+
+	annotation PBI_ResultType = DateTime
+
+expression RangeEnd = #datetime(2024, 12, 31, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: 2f3b546e-6a03-40a5-9628-2e7f5391ccab
+
+	annotation PBI_ResultType = DateTime
+
+expression Community =
+		let
+		    Source = Csv.Document(File.Contents("D:\map.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Promoted Headers",{"community", "Area Number"})
+		in
+		    #"Removed Other Columns"
+	lineageTag: 254e7783-9533-4329-9362-db0faa0a8ad0
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Wards =
+		let
+		    Source = Json.Document(File.Contents("D:\Boundaries - Wards (2023-)_20240724.json")),
+		    #"Converted to Table" = Table.FromRecords({Source}),
+		    #"Expanded features" = Table.ExpandListColumn(#"Converted to Table", "features"),
+		    #"Expanded features1" = Table.ExpandRecordColumn(#"Expanded features", "features", {"type", "geometry", "properties"}, {"features.type", "features.geometry", "features.properties"}),
+		    #"Expanded features.geometry" = Table.ExpandRecordColumn(#"Expanded features1", "features.geometry", {"type", "coordinates"}, {"features.geometry.type", "features.geometry.coordinates"}),
+		    #"Expanded features.geometry.coordinates" = Table.ExpandListColumn(#"Expanded features.geometry", "features.geometry.coordinates"),
+		    #"Expanded features.properties" = Table.ExpandRecordColumn(#"Expanded features.geometry.coordinates", "features.properties", {"ward_id", "st_area_sh", "st_length_", "edit_date", "objectid", "globalid", "ward"}, {"features.properties.ward_id", "features.properties.st_area_sh", "features.properties.st_length_", "features.properties.edit_date", "features.properties.objectid", "features.properties.globalid", "features.properties.ward"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded features.properties",{{"type", type text}, {"features.type", type text}, {"features.geometry.type", type text}, {"features.geometry.coordinates", type any}, {"features.properties.ward_id", Int64.Type}, {"features.properties.st_area_sh", type number}, {"features.properties.st_length_", type number}, {"features.properties.edit_date", type datetime}, {"features.properties.objectid", Int64.Type}, {"features.properties.globalid", type text}, {"features.properties.ward", Int64.Type}}),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"features.properties.ward_id", "features.properties.ward"}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"features.properties.ward", "Ward"}}),
+		    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns", {"Ward"})
+		in
+		    #"Removed Duplicates"
+	lineageTag: 51d73126-7d03-4f11-b421-0a9b3915c601
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

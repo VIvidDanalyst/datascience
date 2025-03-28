@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "election 2024"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9623a4ae-337f-9c92-4ea0-ef8da73ccdfa"
+  }
+}

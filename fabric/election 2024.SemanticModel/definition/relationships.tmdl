@@ -1,0 +1,10 @@
+relationship c7cdf1df-4afd-7566-229f-0d5fa9ed3527
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Postal code'.'Constituency name'
+	toColumn: 'Fact 2024'.'Constituency name'
+
+relationship f80cdfbc-bfd3-0a62-73ed-a701e946d74b
+	fromColumn: 'Fact 2024'.'Full Name'
+	toColumn: Winners.'Full Name'
+

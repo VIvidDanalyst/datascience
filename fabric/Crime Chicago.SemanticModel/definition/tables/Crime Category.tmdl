@@ -1,0 +1,60 @@
+table 'Crime Category'
+	lineageTag: b3b7dc1a-adae-4442-95a3-f1ff0fa085c7
+
+	column 'Primary Type'
+		lineageTag: 1e999290-a563-40ff-af14-033b70b178e3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Crime Chicago[Primary Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Crime Category' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    'Crime Category'[Primary Type] IN {"BATTERY", "CRIMINAL SEXUAL ASSAULT", "SEX OFFENSE", "ASSAULT", "KIDNAPPING", "ROBBERY", "STALKING", "INTIMIDATION", "RITUALISM","CRIM SEXUAL ASSAULT"}, "Violent Crimes",
+			    'Crime Category'[Primary Type] IN {"BURGLARY", "THEFT", "MOTOR VEHICLE THEFT", "CRIMINAL TRESPASS","CRIMINAL DAMAGE"}, "Property Crimes",
+			    'Crime Category'[Primary Type] IN {"NARCOTICS", "OTHER NARCOTIC VIOLATION"}, "Drug-Related Crimes",
+			    'Crime Category'[Primary Type] IN {"PROSTITUTION", "LIQUOR LAW VIOLATION", "PUBLIC PEACE VIOLATION", "PUBLIC INDECENCY", "GAMBLING", "OBSCENITY"}, "Public Order Crimes",
+			    'Crime Category'[Primary Type] IN {"DECEPTIVE PRACTICE", "CONCEALED CARRY LICENSE VIOLATION"}, "Fraud and Deceptive Practices",
+			    'Crime Category'[Primary Type] = "OFFENSE INVOLVING CHILDREN", "Crimes Against Children",
+			    'Crime Category'[Primary Type] = "WEAPONS VIOLATION", "Weapons Violations",
+			    'Crime Category'[Primary Type] = "HOMICIDE", "Homicide",
+			    'Crime Category'[Primary Type] = "ARSON", "Arson",
+			    'Crime Category'[Primary Type] = "INTERFERENCE WITH PUBLIC OFFICER", "Crimes Involving Public Officials",
+			    'Crime Category'[Primary Type] IN {"OTHER OFFENSE", "NON-CRIMINAL", "HUMAN TRAFFICKING"}, "Other Crimes",
+			    "Uncategorized"
+			)
+			
+			```
+		lineageTag: c1c5bfee-c514-4025-b5a2-e7ff9cfb281e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url =
+			SWITCH(TRUE(),
+			    'Crime Category'[Crime Category]="Homicide","https://cdn-icons-png.flaticon.com/128/2323/2323041.png",
+			    'Crime Category'[Crime Category]="Violent Crimes","https://cdn-icons-png.flaticon.com/128/3696/3696184.png",
+			    'Crime Category'[Crime Category]="Crimes Against Children","https://cdn-icons-png.flaticon.com/128/14435/14435068.png",
+			    'Crime Category'[Crime Category]="Drug-Related Crimes","https://cdn-icons-png.flaticon.com/128/1754/1754537.png",
+			    'Crime Category'[Crime Category]="Fraud and Deceptive Practices","https://cdn-icons-png.flaticon.com/128/4410/4410158.png",
+			    'Crime Category'[Crime Category]="Crimes Involving Public Officials","https://cdn-icons-png.flaticon.com/128/9066/9066965.png",
+			    'Crime Category'[Crime Category]="Other Crimes","https://cdn-icons-png.flaticon.com/128/8858/8858927.png",
+			    'Crime Category'[Crime Category]="Weapons Violations","https://cdn-icons-png.flaticon.com/128/886/886645.png",
+			    'Crime Category'[Crime Category]="Public Order Crimes","https://cdn-icons-png.flaticon.com/128/10051/10051741.png",
+			    'Crime Category'[Crime Category]="Property Crimes","https://cdn-icons-png.flaticon.com/128/5138/5138771.png",
+			    'Crime Category'[Crime Category]= "Arson","https://cdn-icons-png.flaticon.com/128/1889/1889147.png")
+		lineageTag: f56bd513-0358-4798-b4c0-e010b25e1f6b
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Crime Category' = calculated
+		mode: import
+		source = DISTINCT('Crime Chicago'[Primary Type])
+
+	annotation PBI_Id = 86ccb8dcceee4cd488f8651dffc75e71
+

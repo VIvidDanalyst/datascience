@@ -1,0 +1,125 @@
+table Beats
+	lineageTag: a20aa478-1b81-4af7-b88c-568d362dc876
+
+	measure Detial = ```
+			SWITCH(
+			    TRUE(),
+			    [YoY] < 0, FORMAT([YoY], "0.00%") & "↓",
+			    [YoY] > 0, FORMAT([YoY], "0.00%") & "↑",
+			    "–"
+			)
+			
+			```
+		lineageTag: d72b6b6c-53e1-46a5-8415-f3bdd72c3aaf
+
+	measure SecondLast28Days = ```
+			
+			VAR EndDate = MAX('Date'[Date]) - 28
+			VAR StartDate = EndDate - 27
+			RETURN
+			CALCULATE(
+			    [Total Crimes],
+			    FILTER(
+			        ALL('Date'),
+			        'Date'[Date] >= StartDate && 'Date'[Date] <= EndDate
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 688d7915-59f9-436a-9e0a-d2abd9b069ea
+
+	measure SecondLast90Days = ```
+			
+			VAR EndDate = MAX('Date'[Date]) - 90
+			VAR StartDate = EndDate - 89
+			RETURN
+			CALCULATE(
+			    [Total Crimes],
+			    FILTER(
+			        ALL('Date'),
+			        'Date'[Date] >= StartDate && 'Date'[Date] <= EndDate
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: d3832465-b1d8-4186-a7e3-657f3b5f94d6
+
+	measure wow = ```
+			
+			CALCULATE(
+			    [Total Crimes],
+			    OFFSET(
+			        -1, 
+			        ORDERBY('Date'[Period90Days], ASC)
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		lineageTag: 2cdc20dc-e75e-4422-a282-34e7d36a79d7
+
+	measure 'Percentage arrest' = DIVIDE([Arrested],[Total Crimes])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1f1a5457-a8f6-476c-9f9e-8b710569169e
+
+	measure 'Domestic %' = DIVIDE([Domestic Crime],[Total Crimes])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0b62260f-de96-47aa-b6ed-0900a87318c1
+
+	measure 'Crime Type Percentage' = ```
+			
+			VAR TotalCrimes = CALCULATE([Total Crimes], REMOVEFILTERS('Crime Category'[Primary Type]))
+			RETURN 
+			DIVIDE([Total Crimes], TotalCrimes, 0)
+			
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e98be948-687f-442d-8eb5-b508b22198e1
+
+	measure 'Location  Percentage' = ```
+			
+			VAR TotalCrimes = CALCULATE([Total Crimes], REMOVEFILTERS('Crime Chicago'[Location Description]))
+			RETURN 
+			DIVIDE([Total Crimes], TotalCrimes, 0)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 60a5fe73-6d74-43fc-80a4-166cce48bc24
+
+	column beat_num
+		dataType: string
+		lineageTag: 07396ad5-ffe9-487a-a478-2efbda757e8f
+		summarizeBy: none
+		sourceColumn: beat_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column Beat2 = ```
+			IF(LEN(Beats[beat_num])=3, "0" & Beats[beat_num], Beats[beat_num])
+			
+			```
+		lineageTag: 9353a05f-60ed-49b9-9cd3-fdf02d7cead3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Beats = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\map (3).csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"beat", Int64.Type}, {"beat_num", Int64.Type}, {"district", Int64.Type}, {"sector", Int64.Type}, {"FID", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"beat_num", "district"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"beat_num"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Duplicates",{"district"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"beat_num", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+

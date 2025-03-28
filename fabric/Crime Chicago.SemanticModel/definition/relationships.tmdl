@@ -1,0 +1,40 @@
+relationship 276fa31a-fc6a-be27-5bd0-24f67d5336d3
+	fromColumn: 'Crime Chicago'.Beat
+	toColumn: Beats.beat_num
+
+relationship 9c6602b0-614a-7379-b843-6a4c9031152b
+	fromColumn: 'Crime Chicago'.'Primary Type'
+	toColumn: 'Crime Category'.'Primary Type'
+
+relationship AutoDetected_b58d465b-92b7-47f1-b972-3c5883a3c1a9
+	fromColumn: 'Crime Chicago'.'District Category'
+	toColumn: District.'District Category'
+
+relationship 6e17693c-695f-8109-43b8-c7fb292bb95a
+	fromColumn: Police_Sentiment_Scores.DISTRICT
+	toColumn: District.'District Number'
+
+relationship f356449b-aa12-c896-7d37-b168e1a61a0a
+	fromColumn: 'Crime Chicago'.Date
+	toColumn: Date.Date
+
+relationship fb453783-7407-7603-b790-0c7e36d946cf
+	fromColumn: Police_Sentiment_Scores.START_DATE
+	toColumn: Date.Date
+
+relationship 2ffc0113-81db-4a8a-a1c5-22c2742781d0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Police_Sentiment_Scores.END_DATE
+	toColumn: LocalDateTable_f6e0d7c4-a131-4166-a3e0-daf1026273ff.Date
+
+relationship 4dd484d7-b8ec-4e97-916b-6b922394d488
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Date Selection'.Date
+	toColumn: LocalDateTable_cec45b5a-93ec-4e5c-a40d-58290b33cbc7.Date
+
+relationship 469566bd-986c-0527-e316-e09a8856cf7e
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Date.Date
+	toColumn: 'Date Selection'.Date
+

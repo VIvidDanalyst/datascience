@@ -1,0 +1,9 @@
+relationship 0d048bd5-d492-6036-268e-c3fb28bc5647
+	fromColumn: factcrime.LsoaCode
+	toColumn: lsoadom.LsoaCode
+
+relationship 1676a11c-4775-e6a6-e292-26b1cf108cf5
+	crossFilteringBehavior: bothDirections
+	fromColumn: postdom.lsoa21cd
+	toColumn: lsoadom.LsoaCode
+

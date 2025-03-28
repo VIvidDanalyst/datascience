@@ -1,0 +1,220 @@
+table 'Fact 2024'
+	lineageTag: d89efc5c-e0f1-4354-981b-b4bb2cdbe359
+
+	measure Won = CALCULATE(COUNTROWS('Fact 2024'),'Fact 2024'[Majority]>0)
+		formatString: 0
+		lineageTag: ea412a07-3011-475e-b7f6-bdb06dad9d23
+
+	measure 'Total votes' = CALCULATE(SUM('Fact 2024'[Candidate vote count]))
+		formatString: 0
+		lineageTag: 8fdd28a5-6b9b-4dce-862d-063cc3872859
+
+	column 'Constituency name'
+		dataType: string
+		lineageTag: c7c1fb28-ae2f-4b47-984a-571d5ac1b838
+		summarizeBy: none
+		sourceColumn: Constituency name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electorate
+		dataType: int64
+		lineageTag: 6778f2f1-8eea-478f-8b03-0117d74df42e
+		summarizeBy: sum
+		sourceColumn: Electorate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Main party name'
+		dataType: string
+		lineageTag: a1fc7b01-05f2-469e-b0dc-edcee4e92f6f
+		summarizeBy: none
+		sourceColumn: Main party name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total electorate in general election'
+		dataType: int64
+		formatString: 0
+		lineageTag: ef93c9ba-13da-4889-8e81-2e2891d11fdd
+		summarizeBy: sum
+		sourceColumn: Total electorate in general election
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country name'
+		dataType: string
+		lineageTag: b699a8de-b121-4c13-a9eb-bf9b18e83751
+		summarizeBy: none
+		sourceColumn: Country name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'English region name'
+		dataType: string
+		lineageTag: fdbcd57a-3369-47d8-87ae-78caad3af60f
+		summarizeBy: none
+		sourceColumn: English region name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Election valid vote count'
+		dataType: int64
+		formatString: 0
+		lineageTag: af5df573-1dbb-4423-a4f0-7ce481b401ab
+		summarizeBy: sum
+		sourceColumn: Election valid vote count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Election invalid vote count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 69baded8-eeda-45ec-9cee-db887c3e4dc5
+		summarizeBy: sum
+		sourceColumn: Election invalid vote count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Election result summary'
+		dataType: string
+		lineageTag: d4ea6a53-370d-4883-aeb9-824dd74f59a4
+		summarizeBy: none
+		sourceColumn: Election result summary
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate family name'
+		dataType: string
+		lineageTag: 11feb14f-fa60-463a-b1e3-662c999c061b
+		summarizeBy: none
+		sourceColumn: Candidate family name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate given name'
+		dataType: string
+		lineageTag: 4972eed6-2844-4a46-8de5-47203d6ea765
+		summarizeBy: none
+		sourceColumn: Candidate given name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate is sitting MP'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e6fa222-818e-43a9-9760-27ffba23d392
+		summarizeBy: none
+		sourceColumn: Candidate is sitting MP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate is former MP'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9087dc7f-3cec-419a-af4c-f86c37be18e1
+		summarizeBy: none
+		sourceColumn: Candidate is former MP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Main party abbreviation'
+		dataType: string
+		lineageTag: 8a12c8b5-5808-48bf-b93a-c0d92b09650a
+		summarizeBy: none
+		sourceColumn: Main party abbreviation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate is standing as Commons Speaker'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8954f632-3175-4943-a61b-3bf817c60f73
+		summarizeBy: none
+		sourceColumn: Candidate is standing as Commons Speaker
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate is standing as independent'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 55b9b4dd-a0e6-49b1-82ff-5ce271ede87b
+		summarizeBy: none
+		sourceColumn: Candidate is standing as independent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate vote count'
+		dataType: int64
+		formatString: 0
+		lineageTag: a3c72d98-b110-43a8-868b-f12e117608d2
+		summarizeBy: sum
+		sourceColumn: Candidate vote count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate vote share'
+		dataType: double
+		lineageTag: a7a21dbc-70df-4761-bfa3-a65667b44f23
+		summarizeBy: sum
+		sourceColumn: Candidate vote share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Candidate vote change'
+		dataType: double
+		lineageTag: 56be0d42-bdd7-4852-a1a9-8104cb071155
+		summarizeBy: sum
+		sourceColumn: Candidate vote change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Majority
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bdfd8bf-f594-4818-9bb6-194604087c27
+		summarizeBy: sum
+		sourceColumn: Majority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidate result position'
+		dataType: int64
+		formatString: 0
+		lineageTag: 306a68de-f9ac-4774-a24b-ba60b61cec19
+		summarizeBy: sum
+		sourceColumn: Candidate result position
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name' = ```
+			'Fact 2024'[Candidate given name] & "  " & 'Fact 2024'[Candidate family name] 
+			```
+		lineageTag: 6b6f50d0-515f-4a51-900a-4417b92e2926
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact 2024' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\candidate-level-results-general-election-04-07-2024 (1).csv"),[Delimiter=",", Columns=54, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Parliament number", Int64.Type}, {"Parliament summoned on", type date}, {"Parliament dissolved on", type text}, {"Parliament Wikidata ID", type text}, {"Parliament London Gazette citation", type text}, {"Parliament URL", type text}, {"General election polling date", type date}, {"General election is notional", type logical}, {"Total electorate in general election", Int64.Type}, {"Total valid votes in general election", Int64.Type}, {"Total invalid votes in general election", Int64.Type}, {"General election URL", type text}, {"Country name", type text}, {"Country geographic code", type text}, {"Country URL", type text}, {"English region name", type text}, {"English region geographic code", type text}, {"English region URL", type text}, {"Constituency name", type text}, {"Constituency geographic code", type text}, {"Constituency designation", type text}, {"Constituency URL", type text}, {"Boundary set start date", type date}, {"Boundary set end date", type text}, {"Boundary set URL", type text}, {"Electorate", Int64.Type}, {"Election polling date", type date}, {"Election is by-election", type logical}, {"Declaration time", type text}, {"Election valid vote count", Int64.Type}, {"Election invalid vote count", Int64.Type}, {"Election URL", type text}, {"Election result summary", type text}, {"Candidate family name", type text}, {"Candidate given name", type text}, {"Candidate MNIS ID", Int64.Type}, {"Candidate is sitting MP", type logical}, {"Candidate is former MP", type logical}, {"Candidate Member URL", type text}, {"Main party name", type text}, {"Main party abbreviation", type text}, {"Main party Electoral Commission ID", type text}, {"Main party MNIS ID", Int64.Type}, {"Main party URL", type text}, {"Adjunct party name", type text}, {"Adjunct party abbreviation", type text}, {"Adjunct party Electoral Commission ID", type text}, {"Candidate is standing as Commons Speaker", type logical}, {"Candidate is standing as independent", type logical}, {"Candidate vote count", Int64.Type}, {"Candidate vote share", type number}, {"Candidate vote change", type number}, {"Majority", Int64.Type}, {"Candidate result position", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Parliament number", "Parliament summoned on", "Parliament dissolved on", "General election polling date", "General election is notional", "Total electorate in general election", "Total valid votes in general election", "Total invalid votes in general election", "Country name", "Country geographic code", "Country URL", "English region name", "English region geographic code", "Constituency name", "Constituency geographic code", "Constituency designation", "Constituency URL", "Electorate", "Election polling date", "Election is by-election", "Declaration time", "Election valid vote count", "Election invalid vote count", "Election URL", "Election result summary", "Candidate family name", "Candidate given name", "Candidate MNIS ID", "Candidate is sitting MP", "Candidate is former MP", "Candidate Member URL", "Main party name", "Main party abbreviation", "Main party URL", "Adjunct party name", "Adjunct party abbreviation", "Adjunct party Electoral Commission ID", "Candidate is standing as Commons Speaker", "Candidate is standing as independent", "Candidate vote count", "Candidate vote share", "Candidate vote change", "Majority", "Candidate result position"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Removed Other Columns",{"Total electorate in general election", "Country name", "English region name", "Constituency name", "Electorate", "Election valid vote count", "Election invalid vote count", "Election result summary", "Candidate family name", "Candidate given name", "Candidate is sitting MP", "Candidate is former MP", "Main party name", "Main party abbreviation", "Candidate is standing as Commons Speaker", "Candidate is standing as independent", "Candidate vote count", "Candidate vote share", "Candidate vote change", "Majority", "Candidate result position"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Other Columns1","","Independent Candidate",Replacer.ReplaceValue,{"Main party name"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

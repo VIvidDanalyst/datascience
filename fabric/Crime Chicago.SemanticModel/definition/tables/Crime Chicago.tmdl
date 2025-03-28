@@ -1,0 +1,266 @@
+table 'Crime Chicago'
+	lineageTag: d100165d-e3f3-44c9-bca7-bb7ac09cb8e2
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: e7901386-5775-40af-b3fc-26ce87ec9e20
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Number'
+		dataType: string
+		lineageTag: 9926e7fa-bd8e-4b6b-b2d7-ce657554f758
+		summarizeBy: none
+		sourceColumn: Case Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Type'
+		dataType: string
+		lineageTag: 32d3a75c-bf8f-48fd-a0e1-c0a3a66928fc
+		summarizeBy: none
+		sourceColumn: Primary Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 38e7e717-c38c-440c-8dfd-99bf37915d4a
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Description'
+		dataType: string
+		lineageTag: 2e6f3819-44ec-4f16-8d9a-4244a2286f29
+		summarizeBy: none
+		sourceColumn: Location Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Arrest
+		dataType: string
+		lineageTag: 1d9cb2d1-cef3-40b2-91fe-7f85adf33623
+		summarizeBy: none
+		sourceColumn: Arrest
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Domestic
+		dataType: string
+		lineageTag: 75fc9b98-29cd-4a5a-8826-09e5a270767a
+		summarizeBy: none
+		sourceColumn: Domestic
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Beat
+		dataType: string
+		lineageTag: 94e5a1ab-9a3e-4a0b-83dc-346d45b2d4c1
+		summarizeBy: none
+		sourceColumn: Beat
+
+		annotation SummarizationSetBy = Automatic
+
+	column District
+		dataType: string
+		lineageTag: e5f8730d-e370-4286-b584-5a97096ba965
+		summarizeBy: none
+		sourceColumn: District
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ward
+		dataType: string
+		lineageTag: 63dba48c-cfda-4ce5-a746-767702ecff9e
+		summarizeBy: none
+		sourceColumn: Ward
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_numbe
+		dataType: string
+		lineageTag: 191b30d9-ef1d-4f6a-85db-afead291929e
+		summarizeBy: none
+		sourceColumn: area_numbe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Log&Lat
+		dataType: string
+		lineageTag: 76b0f873-4d16-42a4-a864-c15a99d73a6a
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Log&Lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latitude - Copy'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1271ec83-82f6-46bf-8c8b-4f9268fb97d4
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Latitude - Copy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Longitude - Copy'
+		dataType: double
+		lineageTag: 2f72c4c8-db5d-408c-8612-c1dc782a547a
+		summarizeBy: none
+		sourceColumn: Longitude - Copy
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Url = RELATED('Crime Category'[Url])
+		lineageTag: 0a0cd212-1b40-42f8-b903-c9da7b85973b
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: bf8ebf54-915e-4861-8bf5-9e4046469ce5
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 9b2dc3a2-8a5b-40d4-b300-7ce45fa908df
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Community.community'
+		dataType: string
+		lineageTag: 1df27f36-b4f9-44d3-8225-363cba0db122
+		summarizeBy: none
+		sourceColumn: Community.community
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'District Category'
+		dataType: string
+		lineageTag: 0886320d-8f03-4ebf-9176-b02f0d057286
+		summarizeBy: none
+		sourceColumn: District Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = RELATED('Date'[Year-week])
+		formatString: 0
+		lineageTag: 8f92c773-96cc-418a-b40f-a2acc85d241e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour = FORMAT('Crime Chicago'[Time],"HH")
+		dataType: string
+		lineageTag: b9028eb8-a722-4a46-8d21-5d876482d477
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Description Category' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "SCHOOL") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "COLLEGE") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "UNIVERSITY"), "School",
+			    
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "RESIDENCE") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "HOME") ||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "YARD") ||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "HOUSE") ||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "GARAGE")||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "Apartment"), "Residential",
+			    
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "STORE") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "OFFICE") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "RESTAURANT") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "SHOP"), "Commercial",
+			    
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "VEHICLE") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "AIRPORT") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "CTA") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "STATION") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "PARKING LOT"), "Transportation",
+			    
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "STREET") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "PARK") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "SIDEWALK") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "LAKE") ||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "WATERFRONT") ||
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "RIVERBANK"), "Public/Outdoor",
+			    
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "HOSPITAL") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "GOVERNMENT") || 
+			    CONTAINSSTRING('Crime Chicago'[Location Description], "POLICE"), "Government/Institutions",
+			    
+			    "Other"  // Default case
+			)
+			
+			```
+		lineageTag: d2467a00-f1d3-49c6-a281-9e06d4781924
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Crime Chicago' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\ibori\OneDrive\Documenten\Crime Chicago .csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"District", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Community Area", "area_numbe"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"area_numbe", Int64.Type}, {"Ward", Int64.Type}, {"Beat", Int64.Type}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"District"}, District, {"District Number"}, "District.1", JoinKind.RightOuter),
+				    #"Expanded District.2" = Table.ExpandTableColumn(#"Merged Queries", "District.1", {"District Category"}, {"District Category"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Expanded District.2",{{"District", type text}, {"Ward", type text}, {"Beat", type text}, {"area_numbe", type text}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type2", "Latitude", "Latitude - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "Longitude", "Longitude - Copy"),
+				    #"Merged Columns" = Table.CombineColumns(#"Duplicated Column1",{"Latitude", "Longitude"},Combiner.CombineTextByDelimiter(",", QuoteStyle.None),"Log&Lat"),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Merged Columns",{{"Primary Type", Text.Proper, type text}, {"Description", Text.Proper, type text}, {"Location Description", Text.Proper, type text}}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Capitalized Each Word", {{"Date", type datetime}}, "en-US"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Changed Type with Locale", {{"Date", type text}}, "en-GB"), "Date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.None), {"Date.1", "Date.2"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"ID", Int64.Type}, {"Case Number", type text}, {"Date.1", type text}, {"Date.2", type time}, {"Arrest", type logical}, {"Domestic", type logical}, {"Latitude - Copy", type number}, {"Longitude - Copy", type number}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type3",{{"Date.2", "Time"}, {"Date.1", "Date"}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns1", {"area_numbe"}, Community, {"Area Number"}, "Community", JoinKind.LeftOuter),
+				    #"Expanded Community" = Table.ExpandTableColumn(#"Merged Queries1", "Community", {"community"}, {"Community.community"}),
+				    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Expanded Community", {{"Date", type date}}, "en-GB"),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type with Locale1","Crim Sexual Assault","Criminal Sexual Assault",Replacer.ReplaceText,{"Primary Type"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value", each [Date] <= #date(2024, 7, 14))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

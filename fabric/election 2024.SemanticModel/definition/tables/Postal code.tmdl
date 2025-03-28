@@ -1,0 +1,38 @@
+table 'Postal code'
+	lineageTag: cb5c7924-975a-4388-9831-9eb45706985c
+
+	column 'Postal Code'
+		dataType: string
+		lineageTag: ca9683d7-0869-409c-b7d6-eb078aa3d538
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Constituency name'
+		dataType: string
+		lineageTag: 93b77125-5145-4bb0-99ba-8cc8cf6a9c1d
+		summarizeBy: none
+		sourceColumn: Constituency name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Postal code' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\pcd_pcon_uk_lu_may_24.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"pcd", type text}, {"oseast1m", Int64.Type}, {"osnrth1m", Int64.Type}, {"pconcd", type text}, {"pconnm", type text}, {"pconnmw", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"pconnm", "Constituency name"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"pconcd", "osnrth1m", "oseast1m", "pconnmw"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"pcd", "Postal Code"}})
+				in
+				    #"Renamed Columns1"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
