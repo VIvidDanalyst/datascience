@@ -2,10 +2,10 @@
   "version": "4.0",
   "datasetReference": {
     "byConnection": {
-      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/B Workspace\";Initial Catalog=\"Warehouse Demo\";Integrated Security=ClaimsToken",
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/B Workspace [Test]\";Initial Catalog=\"Warehouse Demo\";Integrated Security=ClaimsToken",
       "pbiServiceModelId": null,
       "pbiModelVirtualServerName": "sobe_wowvirtualserver",
-      "pbiModelDatabaseName": "53c7d097-b560-4df0-86c2-119b43ef8bdb",
+      "pbiModelDatabaseName": "a512a3f4-0e2d-420b-a63d-d7c1ebe62b39",
       "name": "EntityDataSource",
       "connectionType": "pbiServiceXmlaStyleLive"
     }
